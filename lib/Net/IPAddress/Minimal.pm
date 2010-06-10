@@ -99,65 +99,63 @@ Version 0.01
 This module converts IPv4 strings to integer IP numbers and vice versa.
 
 It's built to be used as quickly and easily as possible, which is why you can
-just simply use the invert_ip function.
+just simply use the C<invert_ip> function.
 
 It recognizes whether you have an IPv4 string or a number and converts it to the
 other form.
 
 Here's a sample script:
 
-`
-    use strict;
-    use warnings;
-
     use Net::IPAddress::Minimal ('invert_ip');
 
     my $input_string = shift @ARGV;
-
-    my $output = invert_ip( $input_string );
+    my $output       = invert_ip( $input_string );
 
     print "$output\n";
-`
 
 =head1 EXPORT
 
 Three functions can be exported:
 
-invert_ip 
-num_to_ip
-ip_to_num
+=over 4
 
+=item * invert_ip 
+
+=item * num_to_ip
+
+=item * ip_to_num
+
+=back
 
 =head1 SUBROUTINES/METHODS
 
 =head2 invert_ip
-gets an IPv4 string or an IP number and converts it to the other form.
 
-`   my $ip_num = invert_ip( '10.200.10.130' );
-    #  $ip_str  = 180882050
+Gets an IPv4 string or an IP number and converts it to the other form.
+
+    my $ip_num = invert_ip( '10.200.10.130' );
+    #  $ip_str = 180882050
     
     my $ip_num = invert_ip( 180882050 );
-    #  $ip_str  = '10.200.10.130';
-`
+    #  $ip_str = '10.200.10.130';
     
 =head2 num_to_ip
 
 Gets an IP number and returns an IPv4 string.
 
     my $ip_num = num_to_ip( 3232235778 );
-    #  $ip_str  = '192.168.1.2';
+    #  $ip_str = '192.168.1.2';
 
 =head2 ip_to_num
 
 Gets a IPv4 string and returns the matching IP number.
 
-** Note that at the moment this function does not ensure that each of the
-   class numbers are between 0-255, and it can return unexpected results
-   when misused **
+B<Note that at the moment this function does not ensure that each of the
+class numbers are between 0-255, and it can return unexpected results
+when misused>
 
-    my $ip_arrayref = '212.212.212.212';
-    my $ip_num      = ip_to_num( $ip_arrayref );
-    #  $ip_num      = 3570717908
+    my $ip_num = ip_to_num( '212.212.212.212' );
+    #  $ip_num = 3570717908
 
 =head2 test_string_structure
 
@@ -167,6 +165,7 @@ it's an IPv4 string, and IP number or something else (which is an error).
 =head1 AUTHORS
 
 Tamir Lousky, C<< <tlousky at cpan.org>  >>
+
 XSawyerX,     C<< <xsawyerx at cpan.org> >>
 
 =head1 BUGS
