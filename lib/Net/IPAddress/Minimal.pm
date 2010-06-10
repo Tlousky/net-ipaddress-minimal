@@ -79,7 +79,7 @@ sub invert_ip {
     }
 
     # If non of the above was executed
-    die( 'Could not convert IP string / number due to unknown error' );
+    die 'Could not convert IP string / number due to unknown error';
 }
 
 1;
