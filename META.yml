@@ -1,0 +1,23 @@
+---
+name: Net-IPAddress-Minimal
+version: 0.01
+author:
+  - 'Tamir Lousky <tlousky@cpan.org>'
+abstract: IP string to number and back
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+build_requires:
+  Test::More: 0
+requires:
+  Exporter: 0
+configure_requires:
+  Module::Build: 0.340201
+provides:
+  Net::IPAddress::Minimal:
+    file: lib/Net/IPAddress/Minimal.pm
+    version: 0.01
+generated_by: Module::Build version 0.340201
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4

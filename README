@@ -1,28 +1,69 @@
 NAME
-    Net::IPAddress::Minimal - The great new Net::IPAddress::Minimal!
+    Net::IPAddress::Minimal - IP string to number and back
 
 VERSION
     Version 0.01
 
 SYNOPSIS
-    Quick summary of what the module does.
+    This module converts IPv4 strings to integer IP numbers and vice versa.
 
-    Perhaps a little code snippet.
+    It's built to be used as quickly and easily as possible, which is why
+    you can just simply use the invert_ip function.
 
-        use Net::IPAddress::Minimal;
+    It recognizes whether you have an IPv4 string or a number and converts
+    it to the other form.
 
-        my $foo = Net::IPAddress::Minimal->new();
-        ...
+    Here's a sample script:
+
+    ` use strict; use warnings;
+
+        use Net::IPAddress::Minimal ('invert_ip');
+
+        my $input_string = shift @ARGV;
+
+        my $output = invert_ip( $input_string );
+
+        print "$output\n";
+    `
 
 EXPORT
-    A list of functions that can be exported. You can delete this section if
-    you don't export anything, such as for a purely object-oriented module.
+    Three functions can be exported:
+
+    invert_ip num_to_ip ip_to_num
 
 SUBROUTINES/METHODS
-  function1
-  function2
-AUTHOR
-    Tamir Lousky, "<tlousky at cpan.org>"
+  invert_ip
+gets an IPv4 string or an IP number and converts it to the other form.
+    ` my $ip_num = invert_ip( '10.200.10.130' ); # $ip_str = 180882050
+
+        my $ip_num = invert_ip( 180882050 );
+        #  $ip_str  = '10.200.10.130';
+    `
+
+  num_to_ip
+    Gets an IP number and returns an IPv4 string.
+
+        my $ip_num = num_to_ip( 3232235778 );
+        #  $ip_str  = '192.168.1.2';
+
+  ip_to_num
+    Gets a IPv4 string and returns the matching IP number.
+
+    ** Note that at the moment this function does not ensure that each of
+    the class numbers are between 0-255, and it can return unexpected
+    results when misused **
+
+        my $ip_arrayref = '212.212.212.212';
+        my $ip_num      = ip_to_num( $ip_arrayref );
+        #  $ip_num      = 3570717908
+
+  test_string_structure
+    Checks the structure of the input string and returns flags indicating
+    whether it's an IPv4 string, and IP number or something else (which is
+    an error).
+
+AUTHORS
+    Tamir Lousky, "<tlousky at cpan.org>" XSawyerX, "<xsawyerx at cpan.org>"
 
 BUGS
     Please report any bugs or feature requests to "bug-net-ipaddress-minimal
