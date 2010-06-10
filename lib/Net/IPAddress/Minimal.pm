@@ -12,9 +12,9 @@ our $VERSION = '0.01';
 sub test_string_structure {
     my $string = shift;
 
-    if ( $string =~ /(\d+)\.(\d+)\.(\d+)\.(\d+)/ ) {
+    if ( $string =~ /(\d+\.\d+\.\d+\.\d+)/ ) {
         # If this is an IP, return the ip flag and seperated IP classes
-        return 'ip', [ $1, $2, $3, $4 ];
+        return 'ip', $1;
     } elsif ( $string =~ /^(\d+)$/ ) {
         return 'num';
     } elsif ( ! $string ) {
@@ -29,10 +29,9 @@ sub ip_to_num {
 # Converting between IP to number is according to this formula:
 # IP = A.B.C.D
 # IP Number = A x (256**3) + B x (256**2) + C x 256 + D
+    my $ip = shift;
 
-    my $ip_classes = shift;
-
-    my ( $Aclass, $Bclass, $Cclass, $Dclass ) = @$ip_classes;
+    my ( $Aclass, $Bclass, $Cclass, $Dclass ) = split /\./, $ip;
     
     my $num = (
         $Aclass * 256**3 +
@@ -146,14 +145,13 @@ Gets an IP number and returns an IPv4 string.
 `
 
 =head2 ipt_to_num
-Gets an arrayref with 4 elements, each containing a single IPv4 class number,
-and returns the matching IP number.
+Gets a IPv4 string and returns the matching IP number.
 
 ** Note that at the moment this function does not ensure that each of the
    class numbers are between 0-255, and it can return unexpected results
    when misused **
 
-`    my $ip_arrayref = [ 212, 212, 212, 212 ];
+`    my $ip_arrayref = '212.212.212.212';
      my $ip_num      = ip_to_num( $ip_arrayref );
      #  $ip_num      = 3570717908
 `
