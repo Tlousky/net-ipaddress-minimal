@@ -63,27 +63,17 @@ sub invert_ip {
     # $ip_classes will get a value only if an IPv4 string was submitted
     # It is an arrayref containing 4 elements, each with the A-D class number
 
-    if ( $result eq 'ip' ) {
+    my %responses = (
+        ip  => sub { ip_to_num($ip_classes) },
+        num => sub { num_to_ip($input_str)  },
+        err => sub { 'Illegal string. Please use IPv4 strings or numbers' },
+    );
 
-        return ip_to_num( $ip_classes );
-
-    } elsif ( $result eq 'num' ) {
-
-        return num_to_ip( $input_str );
-
-    } elsif ( $result eq 'err' ) {
-
-        return 'Illegal String. Please only use use IPv4 strings or IP numbers'; 
-
-    } elsif ( $result eq 'empty' ) {
-
-        return 'Empty String. Retry with an IPv4 string or an IP number';
-
-    } else {
-
-        die( 'Could not convert IP string / number due to unknown error' );
-
+    if ( exists $responses{$result} ) {
+        return $responses{$result};
     }
+
+    die( 'Could not convert IP string / number due to unknown error' );
 }
 
 1;
