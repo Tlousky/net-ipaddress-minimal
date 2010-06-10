@@ -4,7 +4,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 8;
+use Test::More tests => 4;
 use Net::IPAddress::Minimal 'invert_ip';
 
 my $ip_a   = '7.91.205.21';

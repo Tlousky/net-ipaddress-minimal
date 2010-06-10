@@ -10,7 +10,7 @@ our @EXPORT_OK = qw( ip_to_num num_to_ip invert_ip );
 our $VERSION = '0.01';
 
 sub test_string_structure {
-    my $string = shift;
+    my $string = shift || q{};
 
     if ( $string =~ /(\d+\.\d+\.\d+\.\d+)/ ) {
         # If this is an IP, return the ip flag and seperated IP classes
