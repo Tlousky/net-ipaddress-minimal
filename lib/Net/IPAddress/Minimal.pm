@@ -6,14 +6,13 @@ use warnings;
 use base 'Exporter';
 
 our @EXPORT_OK = qw( ip_to_num num_to_ip invert_ip );
-
-our $VERSION = '0.02';
+our $VERSION   = '0.02';
 
 sub test_string_structure {
     my $string = shift || q{};
 
-    if ( $string =~ /(\d+\.\d+\.\d+\.\d+)/ ) {
-        # If this is an IP, return the ip flag and seperated IP classes
+    if ( $string =~ /^(\d+\.\d+\.\d+\.\d+)$/ ) {
+        # If this is an IP, return the ip flag and IP address
         return 'ip', $1;
     } elsif ( $string =~ /^(\d+)$/ ) {
         return 'num';
@@ -166,7 +165,7 @@ it's an IPv4 string, and IP number or something else (which is an error).
 
 Tamir Lousky, C<< <tlousky at cpan.org>  >>
 
-XSawyerX,     C<< <xsawyerx at cpan.org> >>
+SawyerX, C<< <xsawyerx at cpan.org> >>
 
 =head1 BUGS
 
