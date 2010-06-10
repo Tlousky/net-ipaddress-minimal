@@ -70,7 +70,7 @@ sub invert_ip {
     );
 
     if ( exists $responses{$result} ) {
-        return $responses{$result};
+        return $responses{$result}->();
     }
 
     die( 'Could not convert IP string / number due to unknown error' );
