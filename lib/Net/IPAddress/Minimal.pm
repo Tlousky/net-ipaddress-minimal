@@ -88,7 +88,7 @@ __END__
 
 =head1 NAME
 
-Net::IPAddress::Minimal - The great new Net::IPAddress::Minimal!
+Net::IPAddress::Minimal - IP string to number and back
 
 =head1 VERSION
 
