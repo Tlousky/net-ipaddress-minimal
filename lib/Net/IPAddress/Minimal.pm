@@ -96,29 +96,72 @@ Version 0.01
 
 =head1 SYNOPSIS
 
-Quick summary of what the module does.
+This module converts IPv4 strings to integer IP numbers and vice versa.
+It's built to be used as quickly and easily as possible, which is why you can
+just simply use the invert_ip function.
+It recognizes whether you have an IPv4 string or a number and converts
+it to the other form.
 
-Perhaps a little code snippet.
+Here's a sample script:
 
-    use Net::IPAddress::Minimal;
+`
+    use strict;
+    use warnings;
 
-    my $foo = Net::IPAddress::Minimal->new();
-    ...
+    use Net::IPAddress::Minimal ('invert_ip');
+
+    my $input_string = shift @ARGV;
+
+    my $output = invert_ip( $input_string );
+
+    print "$output\n";
+`
 
 =head1 EXPORT
 
-A list of functions that can be exported.  You can delete this section
-if you don't export anything, such as for a purely object-oriented module.
+Three functions can be exported:
+
+invert_ip 
+num_to_ip
+ip_to_num
+
 
 =head1 SUBROUTINES/METHODS
 
-=head2 function1
+=head2 invert_ip
+gets an IPv4 string or an IP number and converts it to the other form.
 
-=head2 function2
+`   my $ip_num = invert_ip( '10.200.10.130' );
+    #  $ip_str  = 180882050
+    
+    my $ip_num = invert_ip( 180882050 );
+    #  $ip_str  = '10.200.10.130';
+`
+    
+=head2 num_to_ip
+Gets an IP number and returns an IPv4 string.
 
-=head1 AUTHOR
+`   my $ip_num = num_to_ip( 3232235778 );
+    #  $ip_str  = '192.168.1.2';
+`
 
-Tamir Lousky, C<< <tlousky at cpan.org> >>
+=head2 ipt_to_num
+Gets an arrayref with 4 elements, each containing a single IPv4 class number,
+and returns the matching IP number.
+
+** Note that at the moment this function does not ensure that each of the
+   class numbers are between 0-255, and it can return unexpected results
+   when misused **
+
+`    my $ip_arrayref = [ 212, 212, 212, 212 ];
+     my $ip_num      = ip_to_num( $ip_arrayref );
+     #  $ip_num      = 3570717908
+`
+
+=head1 AUTHORS
+
+Tamir Lousky, C<< <tlousky at cpan.org>  >>
+XSawyerX,     C<< <xsawyerx at cpan.org> >>
 
 =head1 BUGS
 
