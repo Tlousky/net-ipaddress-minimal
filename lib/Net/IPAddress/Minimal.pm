@@ -97,10 +97,12 @@ Version 0.01
 =head1 SYNOPSIS
 
 This module converts IPv4 strings to integer IP numbers and vice versa.
+
 It's built to be used as quickly and easily as possible, which is why you can
 just simply use the invert_ip function.
-It recognizes whether you have an IPv4 string or a number and converts
-it to the other form.
+
+It recognizes whether you have an IPv4 string or a number and converts it to the
+other form.
 
 Here's a sample script:
 
