@@ -69,8 +69,8 @@ sub invert_ip {
     my %responses = (
         ip    => sub { ip_to_num( $ip_classes ) },
         num   => sub { num_to_ip( $input_str  ) },
-        err   => sub { 'Illegal string. Please use IPv4 strings or numbers' },
-        empty => sub { 'Empty string. Please use IPv4 strings or numbers'   },
+        err   => sub { 'Illegal string. Please use IPv4 strings or numbers.' },
+        empty => sub { 'Empty string. Please use IPv4 strings or numbers.'   },
     );
     # This is a dispatch table, instead of a big ugly if block / switch
 
