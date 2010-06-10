@@ -72,6 +72,7 @@ sub invert_ip {
         err   => sub { 'Illegal string. Please use IPv4 strings or numbers' },
         empty => sub { 'Empty string. Please use IPv4 strings or numbers'   },
     );
+    # This is a dispatch table, instead of a big ugly if block / switch
 
     if ( exists $responses{$result} ) {
         return $responses{$result}->();
