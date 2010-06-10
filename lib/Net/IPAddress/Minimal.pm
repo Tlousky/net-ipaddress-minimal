@@ -7,7 +7,7 @@ use base 'Exporter';
 
 our @EXPORT_OK = qw( ip_to_num num_to_ip invert_ip );
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub test_string_structure {
     my $string = shift || q{};
@@ -92,7 +92,7 @@ Net::IPAddress::Minimal - IP string to number and back
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SYNOPSIS
 

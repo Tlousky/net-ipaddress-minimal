@@ -1,5 +1,10 @@
 Revision history for Net-IPAddress-Minimal
 
+0.02    10.6.2010
+        * 100% test coverage
+        * Bug fixes for uninitialized values
+        * POD fixes and cleanups
+
 0.01    10.6.2010
         First version, Weehooo.
 
