@@ -3,12 +3,16 @@ package Net::IPAddress::Minimal;
 use strict;
 use warnings;
 
+use base 'Exporter';
+
+our @EXPORT_OK = qw( ip_to_num num_to_ip invert_ip );
+
 our $VERSION = '0.01';
 
 sub test_string_structure {
     my $string = shift;
 
-    if ( $string =~ /(\d+)(\.\d+){3}/ ) {
+    if ( $string =~ /(\d+)\.(\d+)\.(\d+)\.(\d+)/ ) {
         # If this is an IP, return the ip flag and seperated IP classes
         return 'ip', [ $1, $2, $3, $4 ];
     } elsif ( $string =~ /^(\d+)$/ ) {
