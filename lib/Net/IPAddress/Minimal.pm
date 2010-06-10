@@ -68,15 +68,17 @@ sub invert_ip {
     # It is an arrayref containing 4 elements, each with the A-D class number
 
     my %responses = (
-        ip  => sub { ip_to_num($ip_classes) },
-        num => sub { num_to_ip($input_str)  },
-        err => sub { 'Illegal string. Please use IPv4 strings or numbers' },
+        ip    => sub { ip_to_num( $ip_classes ) },
+        num   => sub { num_to_ip( $input_str  ) },
+        err   => sub { 'Illegal string. Please use IPv4 strings or numbers' },
+        empty => sub { 'Empty string. Please use IPv4 strings or numbers'   },
     );
 
     if ( exists $responses{$result} ) {
         return $responses{$result}->();
     }
 
+    # If non of the above was executed
     die( 'Could not convert IP string / number due to unknown error' );
 }
 
