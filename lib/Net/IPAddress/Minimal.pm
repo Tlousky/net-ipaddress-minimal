@@ -141,23 +141,28 @@ gets an IPv4 string or an IP number and converts it to the other form.
 `
     
 =head2 num_to_ip
+
 Gets an IP number and returns an IPv4 string.
 
-`   my $ip_num = num_to_ip( 3232235778 );
+    my $ip_num = num_to_ip( 3232235778 );
     #  $ip_str  = '192.168.1.2';
-`
 
-=head2 ipt_to_num
+=head2 ip_to_num
+
 Gets a IPv4 string and returns the matching IP number.
 
 ** Note that at the moment this function does not ensure that each of the
    class numbers are between 0-255, and it can return unexpected results
    when misused **
 
-`    my $ip_arrayref = '212.212.212.212';
-     my $ip_num      = ip_to_num( $ip_arrayref );
-     #  $ip_num      = 3570717908
-`
+    my $ip_arrayref = '212.212.212.212';
+    my $ip_num      = ip_to_num( $ip_arrayref );
+    #  $ip_num      = 3570717908
+
+=head2 test_string_structure
+
+Checks the structure of the input string and returns flags indicating whether
+it's an IPv4 string, and IP number or something else (which is an error).
 
 =head1 AUTHORS
 

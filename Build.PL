@@ -10,6 +10,7 @@ my $builder = Module::Build->new(
     build_requires     => {
         'Test::More' => 0,
     },
+    requires           => { Exporter => 0 },
     add_to_cleanup     => [ 'Net-IPAddress-Minimal-*' ],
     create_makefile_pl => 'traditional',
     create_readme      => 1,
