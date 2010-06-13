@@ -8,7 +8,7 @@ use Data::Validate::IP 'is_ipv4';
 use base 'Exporter';
 
 our @EXPORT_OK = qw( ip_to_num num_to_ip invert_ip );
-our $VERSION   = '0.03';
+our $VERSION   = '0.04';
 
 sub test_string_structure {
     my $string = shift || q{};
@@ -83,7 +83,7 @@ Net::IPAddress::Minimal - IP string to number and back
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =head1 SYNOPSIS
 
@@ -140,10 +140,6 @@ Gets an IP number and returns an IPv4 string.
 =head2 ip_to_num
 
 Gets a IPv4 string and returns the matching IP number.
-
-B<Note that at the moment this function does not ensure that each of the
-class numbers are between 0-255, and it can return unexpected results
-when misused>
 
     my $ip_num = ip_to_num( '212.212.212.212' );
     #  $ip_num = 3570717908

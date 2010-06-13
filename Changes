@@ -1,5 +1,8 @@
 Revision history for Net-IPAddress-Minimal
 
+0.04
+        * Removed old warning
+
 0.03    13.6.2010
         * Adding Data::Validate and Data::Validate::IP for more accuracy
         * Cleaning up
