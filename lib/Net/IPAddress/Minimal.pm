@@ -3,6 +3,8 @@ package Net::IPAddress::Minimal;
 use strict;
 use warnings;
 
+use Data::Validate     'is_integer';
+use Data::Validate::IP 'is_ipv4';
 use base 'Exporter';
 
 our @EXPORT_OK = qw( ip_to_num num_to_ip invert_ip );
@@ -11,23 +13,17 @@ our $VERSION   = '0.02';
 sub test_string_structure {
     my $string = shift || q{};
 
-    if ( $string =~ /^(\d+\.\d+\.\d+\.\d+)$/ ) {
-        # If this is an IP, return the ip flag and IP address
-        return 'ip', $1;
-    } elsif ( $string =~ /^(\d+)$/ ) {
-        return 'num';
-    } elsif ( ! $string ) {
-        return 'empty';
-    } else {
-        # If this is not an IP or a number, flag that it's an illegal string
-        return 'err';
-    }
+    is_ipv4($string)    && return 'ip';
+    is_integer($string) && return 'num';
+    $string             || return 'empty';
+
+    return 'err';
 }
 
 sub ip_to_num {
-# Converting between IP to number is according to this formula:
-# IP = A.B.C.D
-# IP Number = A x (256**3) + B x (256**2) + C x 256 + D
+    # Converting between IP to number is according to this formula:
+    # IP = A.B.C.D
+    # IP Number = A x (256**3) + B x (256**2) + C x 256 + D
     my $ip = shift;
 
     my ( $Aclass, $Bclass, $Cclass, $Dclass ) = split /\./, $ip;
@@ -44,7 +40,7 @@ sub ip_to_num {
 
 sub num_to_ip {
     my $ipnum = shift;
-   
+
     my $z = $ipnum % 256;
     $ipnum >>= 8;
     my $y = $ipnum % 256;
@@ -60,14 +56,10 @@ sub num_to_ip {
 
 sub invert_ip {
     my $input_str = shift;
-   
-    my ( $result, $ip_classes ) = test_string_structure( $input_str );
-    # $ip_classes will get a value only if an IPv4 string was submitted
-    # It is an arrayref containing 4 elements, each with the A-D class number
-
+    my $result    = test_string_structure($input_str);
     my %responses = (
-        ip    => sub { ip_to_num( $ip_classes ) },
-        num   => sub { num_to_ip( $input_str  ) },
+        ip    => sub { ip_to_num($input_str) },
+        num   => sub { num_to_ip($input_str) },
         err   => sub { 'Illegal string. Please use IPv4 strings or numbers.' },
         empty => sub { 'Empty string. Please use IPv4 strings or numbers.'   },
     );
@@ -77,7 +69,7 @@ sub invert_ip {
         return $responses{$result}->();
     }
 
-    # If non of the above was executed
+    # If none of the above was executed
     die 'Could not convert IP string / number due to unknown error';
 }
 
