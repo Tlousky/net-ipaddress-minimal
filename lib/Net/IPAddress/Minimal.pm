@@ -140,45 +140,9 @@ Gets a IPv4 string and returns the matching IP number.
 Checks the structure of the input string and returns flags indicating whether
 it's an IPv4 string, and IP number or something else (which is an error).
 
-=head1 AUTHORS
-
-Tamir Lousky, C<< <tlousky at cpan.org>  >>
-
-SawyerX, C<< <xsawyerx at cpan.org> >>
-
 =head1 BUGS
 
-Please report any bugs or feature requests to
-C<bug-net-ipaddress-minimal at rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Net-IPAddress-Minimal>.  I will
-be notified, and then you'll automatically be notified of progress on your bug
-as I make changes.
+We encourage you to open bugs on the Github Issues page:
 
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc Net::IPAddress::Minimal
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Net-IPAddress-Minimal>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/Net-IPAddress-Minimal>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/Net-IPAddress-Minimal>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/Net-IPAddress-Minimal/>
-
-=back
+L<http://github.com/Tlousky/net-ipaddress-minimal/issues>.
 
