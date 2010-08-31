@@ -1,5 +1,9 @@
 Revision history for Net-IPAddress-Minimal
 
+0.05    31.08.10
+        * Corrected the META repo by patching Dist::Zilla::Plugin::Repository.
+        * Cleaned up more POD.
+
 0.04    31.08.10
         * Moved to Dist::Zilla!
         * That also fixed a prereq causing tests to fail.
