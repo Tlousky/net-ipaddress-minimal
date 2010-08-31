@@ -1,7 +1,7 @@
-package Net::IPAddress::Minimal;
-
 use strict;
 use warnings;
+package Net::IPAddress::Minimal;
+# ABSTRACT: IP string to number and back
 
 use Data::Validate     'is_integer';
 use Data::Validate::IP 'is_ipv4';
@@ -76,14 +76,6 @@ sub invert_ip {
 1;
 
 __END__
-
-=head1 NAME
-
-Net::IPAddress::Minimal - IP string to number and back
-
-=head1 VERSION
-
-Version 0.04
 
 =head1 SYNOPSIS
 
@@ -190,16 +182,4 @@ L<http://cpanratings.perl.org/d/Net-IPAddress-Minimal>
 L<http://search.cpan.org/dist/Net-IPAddress-Minimal/>
 
 =back
-
-=head1 ACKNOWLEDGEMENTS
-
-=head1 LICENSE AND COPYRIGHT
-
-Copyright 2010 Tamir Lousky.
-
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
-
-See http://dev.perl.org/licenses/ for more information.
 
